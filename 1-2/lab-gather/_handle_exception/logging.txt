@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2024-11-21T09:01:46.612032700Z</date>
+  <millis>1732179706612</millis>
+  <nanos>32700</nanos>
+  <sequence>0</sequence>
+  <logger>_14장.Exercise03</logger>
+  <level>WARNING</level>
+  <class>_14장.Exercise03</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>NumberFormatException 발생</message>
+</record>
+<record>
+  <date>2024-11-21T09:01:52.736030800Z</date>
+  <millis>1732179712736</millis>
+  <nanos>30800</nanos>
+  <sequence>1</sequence>
+  <logger>_14장.Exercise03</logger>
+  <level>INFO</level>
+  <class>_14장.Exercise03</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>연산 성공: 첫 번째 숫자:10, 두번째 숫자:3, 나머지:1
+</message>
+</record>
+<record>
+  <date>2024-11-21T09:02:00.715161700Z</date>
+  <millis>1732179720715</millis>
+  <nanos>161700</nanos>
+  <sequence>2</sequence>
+  <logger>_14장.Exercise03</logger>
+  <level>INFO</level>
+  <class>_14장.Exercise03</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>연산 성공: 첫 번째 숫자:8, 두번째 숫자:5, 나머지:3
+</message>
+</record>
+</log>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2024-11-30T10:31:42.411027200Z</date>
+  <millis>1732962702411</millis>
+  <nanos>27200</nanos>
+  <sequence>0</sequence>
+  <logger>exception.LoggingTest3</logger>
+  <level>INFO</level>
+  <class>exception.LoggingTest3</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>info level message</message>
+</record>
+<record>
+  <date>2024-11-30T10:31:42.561015100Z</date>
+  <millis>1732962702561</millis>
+  <nanos>15100</nanos>
+  <sequence>1</sequence>
+  <logger>exception.LoggingTest3</logger>
+  <level>FINE</level>
+  <class>exception.LoggingTest3</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>fine level message</message>
+</record>
+<record>
+  <date>2024-11-30T10:31:42.568013200Z</date>
+  <millis>1732962702568</millis>
+  <nanos>13200</nanos>
+  <sequence>2</sequence>
+  <logger>exception.LoggingTest3</logger>
+  <level>FINEST</level>
+  <class>exception.LoggingTest3</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>finest level message</message>
+</record>
+</log>

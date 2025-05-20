@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2024-12-01T12:58:42.464045600Z</date>
+  <millis>1733057922464</millis>
+  <nanos>45600</nanos>
+  <sequence>0</sequence>
+  <logger>labw12.Exercise03</logger>
+  <level>INFO</level>
+  <class>labw12.Exercise03</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>연산 성공: 첫 번째 숫자:2, 두번째 숫자:2, 나머지:0
+</message>
+</record>
+<record>
+  <date>2024-12-01T12:58:59.947854400Z</date>
+  <millis>1733057939947</millis>
+  <nanos>854400</nanos>
+  <sequence>1</sequence>
+  <logger>labw12.Exercise03</logger>
+  <level>INFO</level>
+  <class>labw12.Exercise03</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>연산 성공: 첫 번째 숫자:7, 두번째 숫자:6, 나머지:1
+</message>
+</record>
+</log>
