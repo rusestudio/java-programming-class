@@ -18,24 +18,12 @@ const javaRoot = path.join(__dirname);
 // API to list Java files recursively
 app.get('/api/files', (req, res) => {
   console.log('API /api/files called');
-  console.log('javaRoot:', javaRoot);
   try {
-    console.log('Items in javaRoot:', fs.readdirSync(javaRoot));
-    const files = [];
-    // For Vercel, limit scan to known dirs to avoid issues
-    const dirsToScan = ['1-1', '1-2'];
-    dirsToScan.forEach(dirName => {
-      const dirPath = path.join(javaRoot, dirName);
-      if (fs.existsSync(dirPath)) {
-        scanDir(dirPath, dirName);
-      } else {
-        console.log('Dir not found:', dirPath);
-      }
-    });
-    console.log('Files found:', files.length);
+    const files = JSON.parse(fs.readFileSync(path.join(__dirname, 'files.json'), 'utf8'));
+    console.log('Files loaded from files.json:', files.length);
     res.json(files);
   } catch (error) {
-    console.error('Error in /api/files:', error);
+    console.error('Error loading files.json:', error);
     res.status(500).json({ error: error.message });
   }
 });
