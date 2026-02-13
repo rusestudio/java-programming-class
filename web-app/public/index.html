@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java Code Viewer & Runner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Java Programming Class - Code Viewer & Runner</h1>
+  <h3>The output will show error unless you make same package to all Java files.<br>
+    to test run copy the code into your setup enviroment</h3>
+  <div class="container">
+    <div class="file-list">
+      <h2>Java Files</h2>
+      <ul id="fileList"></ul>
+    </div>
+    <div class="code-viewer">
+      <div class="code-header">
+        <h2>Code</h2>
+        <button id="copyBtn">Copy Code</button>
+      </div>
+      <pre id="codeDisplay"></pre>
+      <button id="runBtn">Run Code</button>
+    </div>
+    <div class="output">
+      <h2>Output</h2>
+      <pre id="outputDisplay"></pre>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

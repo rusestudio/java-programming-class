@@ -1,0 +1,63 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+.file-list, .code-viewer, .output {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+#fileList {
+  list-style: none;
+  padding: 0;
+}
+
+#fileList li {
+  cursor: pointer;
+  padding: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+#fileList li:hover {
+  background-color: #f0f0f0;
+}
+
+pre {
+  background-color: #f4f4f4;
+  padding: 10px;
+  overflow-x: auto;
+}
+
+#runBtn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#copyBtn {
+  padding: 5px 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#copyBtn:hover {
+  background-color: #218838;
+}
