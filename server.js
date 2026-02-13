@@ -12,8 +12,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Root directory for Java files (parent of web-app)
-const javaRoot = path.join(__dirname, '..');
+// Root directory for Java files
+const javaRoot = path.join(__dirname);
 
 // API to list Java files recursively
 app.get('/api/files', (req, res) => {
