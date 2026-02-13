@@ -17,33 +17,52 @@ const javaRoot = path.join(__dirname);
 
 // API to list Java files recursively
 app.get('/api/files', (req, res) => {
-  const files = [];
-  function scanDir(dir, relativePath = '') {
-    const items = fs.readdirSync(dir);
-    items.forEach(item => {
-      const fullPath = path.join(dir, item);
-      const relPath = path.join(relativePath, item);
-      if (fs.statSync(fullPath).isDirectory()) {
-        scanDir(fullPath, relPath);
-      } else if (item.endsWith('.java')) {
-        files.push(relPath);
-      }
-    });
+  console.log('API /api/files called');
+  console.log('javaRoot:', javaRoot);
+  try {
+    const files = [];
+    function scanDir(dir, relativePath = '') {
+      console.log('Scanning dir:', dir);
+      const items = fs.readdirSync(dir);
+      console.log('Items in dir:', items.length);
+      items.forEach(item => {
+        const fullPath = path.join(dir, item);
+        const relPath = path.join(relativePath, item);
+        if (fs.statSync(fullPath).isDirectory() && !item.startsWith('.') && item !== 'node_modules' && item !== 'web-app') {
+          scanDir(fullPath, relPath);
+        } else if (item.endsWith('.java')) {
+          files.push(relPath);
+        }
+      });
+    }
+    scanDir(javaRoot);
+    console.log('Files found:', files.length);
+    res.json(files);
+  } catch (error) {
+    console.error('Error in /api/files:', error);
+    res.status(500).json({ error: error.message });
   }
-  scanDir(javaRoot);
-  res.json(files);
 });
 
 // API to get file content
 app.get('/api/file', (req, res) => {
   const filePath = req.query.path;
+  console.log('API /api/file called with path:', filePath);
   if (!filePath) return res.status(400).send('Path required');
   const fullPath = path.join(javaRoot, filePath);
-  if (!fs.existsSync(fullPath) || !fullPath.endsWith('.java')) {
-    return res.status(404).send('File not found');
+  console.log('Full path:', fullPath);
+  try {
+    if (!fs.existsSync(fullPath) || !fullPath.endsWith('.java')) {
+      console.log('File not found or not .java');
+      return res.status(404).send('File not found');
+    }
+    const content = fs.readFileSync(fullPath, 'utf8');
+    console.log('File content length:', content.length);
+    res.send(content);
+  } catch (error) {
+    console.error('Error in /api/file:', error);
+    res.status(500).json({ error: error.message });
   }
-  const content = fs.readFileSync(fullPath, 'utf8');
-  res.send(content);
 });
 
 // API to run Java code
