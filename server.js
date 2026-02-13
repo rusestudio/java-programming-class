@@ -22,21 +22,16 @@ app.get('/api/files', (req, res) => {
   try {
     console.log('Items in javaRoot:', fs.readdirSync(javaRoot));
     const files = [];
-    function scanDir(dir, relativePath = '') {
-      console.log('Scanning dir:', dir);
-      const items = fs.readdirSync(dir);
-      console.log('Items in dir:', items);
-      items.forEach(item => {
-        const fullPath = path.join(dir, item);
-        const relPath = path.join(relativePath, item);
-        if (fs.statSync(fullPath).isDirectory() && !item.startsWith('.') && item !== 'node_modules' && item !== 'web-app') {
-          scanDir(fullPath, relPath);
-        } else if (item.endsWith('.java')) {
-          files.push(relPath);
-        }
-      });
-    }
-    scanDir(javaRoot);
+    // For Vercel, limit scan to known dirs to avoid issues
+    const dirsToScan = ['1-1', '1-2'];
+    dirsToScan.forEach(dirName => {
+      const dirPath = path.join(javaRoot, dirName);
+      if (fs.existsSync(dirPath)) {
+        scanDir(dirPath, dirName);
+      } else {
+        console.log('Dir not found:', dirPath);
+      }
+    });
     console.log('Files found:', files.length);
     res.json(files);
   } catch (error) {
