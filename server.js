@@ -30,7 +30,7 @@ app.get('/api/files', (req, res) => {
 
 // API to get file content
 app.get('/api/file', (req, res) => {
-  const filePath = req.query.path;
+  const filePath = req.query.path.replace(/\\/g, '/'); // Normalize path separators
   console.log('API /api/file called with path:', filePath);
   if (!filePath) return res.status(400).send('Path required');
   const fullPath = path.join(javaRoot, filePath);
