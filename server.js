@@ -35,6 +35,10 @@ app.get('/api/file', (req, res) => {
   if (!filePath) return res.status(400).send('Path required');
   const fullPath = path.join(javaRoot, filePath);
   console.log('Full path:', fullPath);
+  console.log('File exists:', fs.existsSync(fullPath));
+  if (fs.existsSync(fullPath)) {
+    console.log('File stats:', fs.statSync(fullPath));
+  }
   try {
     if (!fs.existsSync(fullPath) || !fullPath.endsWith('.java')) {
       console.log('File not found or not .java');
