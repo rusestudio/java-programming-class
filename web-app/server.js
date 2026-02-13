@@ -48,31 +48,9 @@ app.get('/api/file', (req, res) => {
 
 // API to run Java code
 app.post('/api/run', (req, res) => {
-  const { code, className } = req.body;
-  if (!code || !className) return res.status(400).send('Code and className required');
-
-  // Write code to temp file
-  const tempDir = path.join(__dirname, 'temp');
-  if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir);
-  const javaFile = path.join(tempDir, `${className}.java`);
-  fs.writeFileSync(javaFile, code);
-
-  // Compile
-  exec(`javac "${javaFile}"`, (err, stdout, stderr) => {
-    if (err) {
-      fs.unlinkSync(javaFile);
-      return res.json({ output: stderr, error: true });
-    }
-
-    // Run
-    const classFile = path.join(tempDir, className);
-    exec(`java -cp "${tempDir}" ${className}`, (err, stdout, stderr) => {
-      fs.unlinkSync(javaFile);
-      const classFilePath = `${classFile}.class`;
-      if (fs.existsSync(classFilePath)) fs.unlinkSync(classFilePath);
-      res.json({ output: stdout || stderr, error: !!err });
-    });
-  });
+  // Note: Running Java code requires JDK, which isn't available on Vercel.
+  // This will fail in production. For demo, return a message.
+  res.json({ output: "Java execution not supported on Vercel. Please run locally.", error: true });
 });
 
 app.listen(PORT, () => {
