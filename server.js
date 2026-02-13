@@ -20,11 +20,12 @@ app.get('/api/files', (req, res) => {
   console.log('API /api/files called');
   console.log('javaRoot:', javaRoot);
   try {
+    console.log('Items in javaRoot:', fs.readdirSync(javaRoot));
     const files = [];
     function scanDir(dir, relativePath = '') {
       console.log('Scanning dir:', dir);
       const items = fs.readdirSync(dir);
-      console.log('Items in dir:', items.length);
+      console.log('Items in dir:', items);
       items.forEach(item => {
         const fullPath = path.join(dir, item);
         const relPath = path.join(relativePath, item);
